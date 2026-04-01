@@ -18,9 +18,7 @@ O **Artemis SOAR** é um microserviço de alta performance projetado para orques
 
 ---
 
-## 🏗️ Fluxo de Arquitetura (Mermaid.js)
-
-O GitHub suporta nativamente diagramas de arquitetura bonitões. Este diagrama mostra o fluxo exato que você construiu:
+## 🏗️ Fluxo de Arquitetura
 
 ```mermaid
 graph TD
@@ -47,8 +45,6 @@ graph TD
 ---
 
 ## 🌌 Engenharia do Projeto & Stack
-
-Tabelas HTML invisíveis são o segredo para esse layout de "Tabela Invisível" que você já gosta.
 
 <div align="center">
   <table border="0" style="background-color: transparent;">
@@ -85,8 +81,6 @@ Ao contrário de scripts simples, a Artemis foi projetada sob princípios rigoro
 
 ## 🚀 Deployment & Lab
 
-Unifiquei os blocos de código para ficar mais limpo.
-
 ### 🐋 Docker Orchestration
 
 ```bash
@@ -104,12 +98,7 @@ docker run -d -p 8000:8000 \
 ---
 
 <div align="center">
-  <h3> 🔮 Pipeline Insights </h3>
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=kaxcav0tracer&repo=artemis-project&theme=transparent&title_color=B084CC&text_color=A8B2C3&icon_color=00F5FF&hide_border=true" alt="Repo Stats" />
-  
-  <br><br>
-  
-  <p><i>Desenvolvido como parte do arsenal de defesa de **Victor Ramalho**</i></p>
+  <p><i>Desenvolvido como parte do arsenal de defesa de <b>Victor Ramalho</b></i></p>
   
   <a href="https://linkedin.com/in/victor-ramalho-lisboa" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Profile-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
