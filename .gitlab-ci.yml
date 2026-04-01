@@ -1,0 +1,22 @@
+stages:
+  - test
+  - build
+
+bandit_scan:
+  stage: test
+  image: python:3.11-slim
+  script:
+    - pip install --no-cache-dir bandit
+    - bandit -r src/
+
+build_image:
+  stage: build
+  image: docker:27.1
+  services:
+    - name: docker:dind
+      command: ["--tls=false"]
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  script:
+    - docker build -t artemis-soar:latest .
+    - echo "Docker image build completed successfully."
