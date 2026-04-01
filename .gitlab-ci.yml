@@ -2,21 +2,21 @@ stages:
   - test
   - build
 
-bandit_scan:
+vulnerabilidade_codigo:
   stage: test
   image: python:3.11-slim
   script:
-    - pip install --no-cache-dir bandit
+    - pip install bandit
     - bandit -r src/
 
-build_image:
+construir_imagem:
   stage: build
-  image: docker:27.1
+  image: docker:latest
   services:
-    - name: docker:dind
-      command: ["--tls=false"]
+    - docker:dind
   variables:
+    DOCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: ""
   script:
-    - docker build -t artemis-soar:latest .
-    - echo "Docker image build completed successfully."
+    - docker build -t artemis-soar .
+    - echo "Build concluído com sucesso!"
