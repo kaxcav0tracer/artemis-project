@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database for threat cache
+  postgres:
+    image: postgres:15-alpine
+    container_name: artemis-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: artemis
+      POSTGRES_DB: artemis
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Artemis SOAR API
+  artemis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: artemis-api
+    # FORÇA O DOCKER A LER O ARQUIVO .ENV
+    env_file:
+      - .env
+    environment:
+      # Removemos o "your_api_key_here" para evitar confusão
+      VT_API_KEY: ${VT_API_KEY}
+      DATABASE_URL: postgresql+asyncpg://postgres:artemis@postgres:5432/artemis
+      SQL_ECHO: ${SQL_ECHO:-false}
+      FG_ENABLED: ${FG_ENABLED:-false}
+      FG_URL: ${FG_URL:-https://192.168.1.99}
+      FG_API_TOKEN: ${FG_API_TOKEN:-}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Artemis SOAR Dashboard (Streamlit)
+  artemis-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: artemis-dashboard
+    command: streamlit run src/dashboard.py --server.port=8501 --server.address=0.0.0.0
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:artemis@postgres:5432/artemis
+    ports:
+      - "8501:8501"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
