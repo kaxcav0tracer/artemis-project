@@ -378,3 +378,5 @@ Contribuições são bem-vindas! Para modificações maiores, abra uma issue pri
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=100&section=footer" width="100%" />
 </div>
+
+
