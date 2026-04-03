@@ -368,7 +368,7 @@ Contribuições são bem-vindas! Para modificações maiores, abra uma issue pri
 ---
 
 <div align="center">
-  <p><i>Desenvolvido como parte do arsenal de defesa de <b>Victor Ramalho</b></i></p>
+  <p><i>Desenvolvido como parte do arsenal de defesa de <b>Victor Girardi</b></i></p>
   
   <a href="https://linkedin.com/in/victor-ramalho-lisboa" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Profile-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
